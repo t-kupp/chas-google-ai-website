@@ -5,7 +5,7 @@ export default function App({ Component, pageProps }) {
   return (
     <div className="min-h-screen">
       <Header />
-      <div class="w-full">
+      <div className="w-full">
         <Component {...pageProps} />
       </div>
     </div>
