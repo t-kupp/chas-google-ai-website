@@ -51,6 +51,7 @@ export default function ChasGPT() {
       </div>
       <div className="mx-auto flex w-full max-w-3xl flex-grow flex-col">
         <div className="flex max-h-full flex-col gap-4">
+          {console.log(history)}
           {history.map((entry, index) => (
             <div key={index} className={`chat ${entry.role === "user" ? "chat-end" : "chat-start"}`}>
               <div className={entry.role === "user" && "chat-bubble"}>
@@ -58,7 +59,7 @@ export default function ChasGPT() {
               </div>
             </div>
           ))}
-          {isThinking && <div class="loading loading-spinner loading-lg mx-auto"></div>}
+          {isThinking && <div className="loading loading-spinner loading-lg mx-auto"></div>}
         </div>
         <div className="sticky bottom-8 mt-auto flex flex-col pt-8">
           {history.length == 0 && <h1 className="mx-auto my-8 text-2xl font-bold">What can I help with?</h1>}{" "}
