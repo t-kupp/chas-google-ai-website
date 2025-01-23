@@ -17,7 +17,7 @@ export default function Header() {
           </li>
           <li>
             <Link className="btn btn-ghost" href="/TranslatorAi">
-              Joel
+              TranslatorAi
             </Link>
           </li>
           <li>
