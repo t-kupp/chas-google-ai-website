@@ -16,7 +16,7 @@ export default function Header() {
             </Link>
           </li>
           <li>
-            <Link className="btn btn-ghost" href="/Joel">
+            <Link className="btn btn-ghost" href="/TranslatorAi">
               Joel
             </Link>
           </li>
