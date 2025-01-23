@@ -11,7 +11,7 @@ export default function Header() {
             </Link>
           </li>
           <li>
-            <Link className="btn btn-ghost" href="/jan">
+            <Link className="btn btn-ghost" href="/Jan">
               Jan
             </Link>
           </li>
