@@ -6,9 +6,9 @@ const inter = Inter({ subsets: ["latin"] });
 
 export default function App({ Component, pageProps }) {
   return (
-    <div className="min-h-screen">
+    <div className="flex h-screen flex-col">
       <Header />
-      <div className={`${inter.className} w-full`}>
+      <div className={`${inter.className} flex w-full flex-grow flex-col`}>
         <Component {...pageProps} />
       </div>
     </div>

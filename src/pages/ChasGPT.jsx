@@ -43,8 +43,15 @@ export default function ChasGPT() {
     scrollDown();
   }
 
+  function processText(text) {
+    const parts = text.split(/(\*\*.+?\*\*)/);
+    return parts.map((part, index) =>
+      part.startsWith("**") && part.endsWith("**") ? <strong key={index}>{part.slice(2, -2)}</strong> : part,
+    );
+  }
+
   return (
-    <div className="flex min-h-[90vh] flex-col px-4 py-8">
+    <div className="flex flex-grow flex-col px-4 py-8 dark:bg-neutral-900">
       <div className="navbar">
         <Sidebar />
         <button className="btn btn-ghost">ChasGPT</button>
@@ -54,8 +61,8 @@ export default function ChasGPT() {
           {console.log(history)}
           {history.map((entry, index) => (
             <div key={index} className={`chat ${entry.role === "user" ? "chat-end" : "chat-start"}`}>
-              <div className={entry.role === "user" && "chat-bubble"}>
-                {entry.parts.map((part) => part.text).join(" ")}
+              <div className={`${entry.role === "user" && "chat-bubble"} whitespace-pre-wrap`}>
+                {entry.parts.map((part) => processText(part.text))}
               </div>
             </div>
           ))}
@@ -67,7 +74,7 @@ export default function ChasGPT() {
             onKeyDown={(e) => handleKeyDown(e)}
             type="text"
             placeholder="Message ChasGPT"
-            className="input input-bordered mx-auto h-16 w-full max-w-xl"
+            className="input input-bordered mx-auto h-16 w-full max-w-xl rounded-3xl dark:bg-neutral-800 dark:placeholder-neutral-400"
           />
         </div>
       </div>
