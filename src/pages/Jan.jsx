@@ -1,25 +1,35 @@
 import Sidebar from "@/components/Jan-Sidebar";
-import { model } from "../../util/ai";
-
+import { model } from "../../util/jan-ai";
 import { useState } from "react";
 
 export default function ChasGPT() {
-  const [prompt, setPrompt] = useState("");
-  const [answer, setAnswer] = useState("");
+  const [history, setHistory] = useState([]);
 
   function handleKeyDown(e) {
-    if (e.key === "Enter" && e.target.value.trim() != "") {
-      const inputValue = e.target.value;
-      setPrompt(inputValue);
-      sendPrompt(inputValue);
+    if (e.key === "Enter" && e.target.value.trim() !== "") {
+      const userMessage = e.target.value.trim();
       e.target.value = "";
+      addMessageToHistory("user", userMessage);
+      generateChat(userMessage);
     }
   }
 
-  async function sendPrompt(prompt) {
-    const result = await model.generateContent(prompt);
+  function addMessageToHistory(role, text) {
+    setHistory((prevHistory) => [
+      ...prevHistory,
+      {
+        role,
+        parts: [{ text }],
+      },
+    ]);
+  }
+
+  async function generateChat(userInput) {
+    const chat = model.startChat({ history });
+    const result = await chat.sendMessage(userInput);
     const responseText = result.response.text();
-    setAnswer(responseText);
+
+    addMessageToHistory("model", responseText);
   }
 
   return (
@@ -29,12 +39,17 @@ export default function ChasGPT() {
         <button className="btn btn-ghost">ChasGPT</button>
       </div>
       <div className="mx-auto flex w-full max-w-3xl flex-grow flex-col">
-        <div className="flex flex-col gap-4">
-          <div className="chat chat-start">{prompt && <div className="chat-bubble">{prompt}</div>}</div>
-          <div className="chat chat-end">{answer && <div className="chat-bubble">{answer}</div>}</div>
+        <div className="flex max-h-full flex-col gap-4">
+          {history.map((entry, index) => (
+            <div key={index} className={`chat ${entry.role === "user" ? "chat-end" : "chat-start"}`}>
+              <div className={entry.role === "user" && "chat-bubble"}>
+                {entry.parts.map((part) => part.text).join(" ")}
+              </div>
+            </div>
+          ))}
         </div>
-        <div className="mt-auto flex flex-col">
-          {!prompt && <h1 className="mx-auto my-8 text-2xl font-bold">What can I help with?</h1>}
+        <div className="sticky bottom-8 mt-auto flex flex-col pt-8">
+          {history.length == 0 && <h1 className="mx-auto my-8 text-2xl font-bold">What can I help with?</h1>}{" "}
           <input
             onKeyDown={(e) => handleKeyDown(e)}
             type="text"
