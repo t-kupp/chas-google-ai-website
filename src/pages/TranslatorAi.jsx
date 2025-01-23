@@ -15,9 +15,10 @@ export default function LanguageTranslator() {
 
       const answerText = result.response.text();
       setAnswer(answerText);
+      console.log(answerText);
       setTimeout(() => {
         setLoading(false);
-      }, 700);
+      }, 500);
     } catch (error) {
       console.log("error", error);
     }
@@ -53,27 +54,10 @@ export default function LanguageTranslator() {
             <button
               className="btn"
               onClick={() => {
-                if (prompt == !"") {
+                if (prompt != "") {
                   handleAnswer();
                 } else {
-                  return (
-                    <div role="alert" className="alert alert-warning">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-6 w-6 shrink-0 stroke-current"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="2"
-                          d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
-                        />
-                      </svg>
-                      <span>Warning: Invalid email address!</span>
-                    </div>
-                  );
+                  alert("Why");
                 }
               }}
             >
@@ -119,7 +103,7 @@ export default function LanguageTranslator() {
             ></textarea>
           </div>
           <div className="divider lg:divider-horizontal">
-            {loading ? <span className="loading loading-bars loading-md"></span> : <span></span>}
+            {loading ? <span className="loading loading-bars loading-md"></span> : ""}
           </div>
           <div className="card grid h-32 flex-grow place-items-center rounded-box border-2 border-gray-400 shadow-xl">
             <textarea
