@@ -31,21 +31,11 @@ export default function ChasGPT() {
       </div>
       <div className="mx-auto flex w-full max-w-3xl flex-grow flex-col">
         <div className="flex flex-col gap-4">
-          <div className="chat chat-start">
-            {displayPrompt && (
-              <div className="chat-bubble">{displayPrompt}</div>
-            )}
-          </div>
-          <div className="chat chat-end">
-            {answer && <div className="chat-bubble">{answer}</div>}
-          </div>
+          <div className="chat chat-start">{displayPrompt && <div className="chat-bubble">{displayPrompt}</div>}</div>
+          <div className="chat chat-end">{answer && <div className="chat-bubble">{answer}</div>}</div>
         </div>
         <div className="mt-auto flex flex-col">
-          {!displayPrompt && (
-            <h1 className="mx-auto my-8 text-2xl font-bold">
-              What can I help with?
-            </h1>
-          )}
+          {!displayPrompt && <h1 className="mx-auto my-8 text-2xl font-bold">What can I help with?</h1>}
           <input
             onChange={(e) => setPrompt(e.target.value)}
             onKeyDown={(e) => handleKeyDown(e)}

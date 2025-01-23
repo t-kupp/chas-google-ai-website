@@ -23,6 +23,7 @@
     "tailwindcss": "^3.4.1"
   },
   "prettier": {
+    "printWidth": 120,
     "plugins": [
       "prettier-plugin-tailwindcss"
     ]
