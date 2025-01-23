@@ -4,6 +4,7 @@ import { useState } from "react";
 
 export default function ChasGPT() {
   const [history, setHistory] = useState([]);
+  const [isThinking, setIsThinking] = useState(false);
 
   function handleKeyDown(e) {
     if (e.key === "Enter" && e.target.value.trim() !== "") {
@@ -25,11 +26,16 @@ export default function ChasGPT() {
   }
 
   async function generateChat(userInput) {
+    setIsThinking(true);
     const chat = model.startChat({ history });
     const result = await chat.sendMessage(userInput);
     const responseText = result.response.text();
 
     addMessageToHistory("model", responseText);
+    setIsThinking(false);
+    setTimeout(() => {
+      window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
+    }, 100);
   }
 
   return (
@@ -47,6 +53,7 @@ export default function ChasGPT() {
               </div>
             </div>
           ))}
+          {isThinking && <div class="loading loading-spinner loading-lg mx-auto"></div>}
         </div>
         <div className="sticky bottom-8 mt-auto flex flex-col pt-8">
           {history.length == 0 && <h1 className="mx-auto my-8 text-2xl font-bold">What can I help with?</h1>}{" "}
