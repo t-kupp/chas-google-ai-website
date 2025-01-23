@@ -1,4 +1,4 @@
-import Sidebar from "@/components/Jan-Sidebar";
+import Sidebar from "@/components/ChasGPT-Sidebar";
 import { model } from "../../util/jan-ai";
 import { useState } from "react";
 
@@ -25,17 +25,22 @@ export default function ChasGPT() {
     ]);
   }
 
+  function scrollDown() {
+    setTimeout(() => {
+      window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
+    }, 100);
+  }
+
   async function generateChat(userInput) {
     setIsThinking(true);
+    scrollDown();
     const chat = model.startChat({ history });
     const result = await chat.sendMessage(userInput);
     const responseText = result.response.text();
 
     addMessageToHistory("model", responseText);
     setIsThinking(false);
-    setTimeout(() => {
-      window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
-    }, 100);
+    scrollDown();
   }
 
   return (
