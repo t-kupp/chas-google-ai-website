@@ -1,5 +1,8 @@
 import { model } from "../../util/naayav-ai";
 import { useState } from "react";
+import { LuCookingPot } from "react-icons/lu";
+import { SiCodechef } from "react-icons/si";
+
 
 export default function RecipePrompt() {
   const [isThinking, setIsThinking] = useState(false);
@@ -59,9 +62,10 @@ export default function RecipePrompt() {
           )}
           {isThinking && <div className="loading loading-spinner loading-lg mx-auto"></div>}
         </div>
-
-        <div className="sticky bottom-8 mt-auto flex flex-col pt-8">
-          {!recipe && <h1 className="mx-auto my-8 text-2xl font-bold">What do you want to eat today?</h1>}
+        <div className="sticky bottom-8 mt-auto flex flex-col pt-8 ">
+          {!recipe && <h1 className="flex flex-col mx-auto my-8 text-2xl place-items-center font-bold p-8"> <SiCodechef className="h-24" size={52} />
+            What do you want to eat today?
+            </h1>}
           <input
             value={input}
             onChange={(e) => setInput(e.target.value)}
@@ -138,7 +142,8 @@ export default function RecipePrompt() {
             onClick={sendRequest}
             className="btn btn-primary mx-auto mt-6 w-full max-w-xl"
           >
-            Get Recipe
+            Get Cooking! <LuCookingPot />
+
           </button>
         </div>
       </div>

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { SiCodechef } from "react-icons/si";
 
 export default function Header() {
   return (
@@ -22,7 +23,7 @@ export default function Header() {
           </li>
           <li>
             <Link className="btn btn-ghost" href="/CulinaryAI">
-              CulinaryAI
+            <SiCodechef size={24}/> CulinaryAI
             </Link>
           </li>
           <li>
