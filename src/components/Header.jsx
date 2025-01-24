@@ -22,7 +22,7 @@ export default function Header() {
           </li>
           <li>
             <Link className="btn btn-ghost" href="/naayav">
-              Naayav
+            CulinaryAI
             </Link>
           </li>
           <li>
