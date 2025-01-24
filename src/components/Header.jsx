@@ -22,12 +22,12 @@ export default function Header() {
           </li>
           <li>
             <Link className="btn btn-ghost" href="/CulinaryAI">
-            CulinaryAI
+              CulinaryAI
             </Link>
           </li>
           <li>
-            <Link className="btn btn-ghost" href="/selena">
-              Selena
+            <Link className="btn btn-ghost" href="/AiHealthCoach">
+              AI Health Coach
             </Link>
           </li>
         </ul>
