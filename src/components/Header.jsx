@@ -21,7 +21,7 @@ export default function Header() {
             </Link>
           </li>
           <li>
-            <Link className="btn btn-ghost" href="/naayav">
+            <Link className="btn btn-ghost" href="/CulinaryAI">
             CulinaryAI
             </Link>
           </li>

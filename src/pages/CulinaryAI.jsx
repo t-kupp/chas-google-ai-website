@@ -31,7 +31,7 @@ export default function RecipePrompt() {
   }
 
   return (
-    <div className="flex flex-grow flex-col px-4 py-8 bg-base-200">
+    <div className="flex flex-grow flex-col px-4 py-8 bg-base-200 dark:bg-neutral-900">
       <div className="mx-auto flex w-full max-w-3xl flex-grow flex-col">
         <div className="flex max-h-full flex-col gap-4">
           {recipe && (
