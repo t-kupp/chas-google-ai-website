@@ -11,13 +11,13 @@ export default function Header() {
             </Link>
           </li>
           <li>
-            <Link className="btn btn-ghost" href="/Jan">
-              Jan
+            <Link className="btn btn-ghost" href="/ChasGPT">
+              ChasGPT
             </Link>
           </li>
           <li>
-            <Link className="btn btn-ghost" href="/Joel">
-              Joel
+            <Link className="btn btn-ghost" href="/TranslatorAi">
+              TranslatorAi
             </Link>
           </li>
           <li>
