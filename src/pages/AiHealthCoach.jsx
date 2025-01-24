@@ -36,9 +36,10 @@ export default function AiHealthCoach() {
 
     // Full prompt for the AI
     const fullPrompt = `As a professional health coach in ${selectedCategory} and ${selectedSubcategory}, 
-    provide a concise, practical, and empathetic answer to: ${prompt}. 
-    Respond with actionable tips in bullet points, considering the user's specific goals, preferences, and limitations. 
-    Keep the tone supportive and motivational while maintaining professionalism.`;
+    provide a detailed, actionable, and empathetic response to: ${prompt}. 
+    Offer practical tips and advice in simple bullet points (using "-" or "•") with no bold text or markdown formatting. 
+    Ensure the response is thorough and doesn't require any follow-up questions, but keep it to the most important information so that the response is not too overwhelming. 
+    Maintain a supportive, motivational, and professional tone throughout.`;
 
     // Send the prompt to the AI and get a text response
     const result = await model.generateContent(fullPrompt);
@@ -52,20 +53,20 @@ export default function AiHealthCoach() {
   // Homepage AI Health Coach
   if (!isStarted) {
     return (
-      <div className="flex min-h-screen items-center justify-center p-4">
-        <div className="card w-full max-w-md rounded-lg bg-white shadow-xl">
-          <div className="card-body items-center text-center">
-            <h1 className="card-title mb-4 text-3xl font-bold text-green-700">Welcome to your AI Health Coach!</h1>
+      <div className="flex min-h-screen flex-col items-center justify-center bg-neutral-100 p-6 sm:p-8 dark:bg-neutral-900">
+        <div className="card m-8 w-full max-w-lg rounded-2xl bg-gradient-to-tl from-green-100 to-white shadow-2xl">
+          <div className="card-body items-center p-10 text-center">
+            <h1 className="mb-4 text-4xl font-semibold text-black">
+              Your AI Health Coach
+              <span className="block text-lg font-medium text-green-600">is Ready to Help You 🌱</span>
+            </h1>
 
-            <p className="mb-6 text-gray-700">
-              Tell us what you want to achieve, and we'll give you personalized recommendations.
+            <p className="mx-auto mb-8 max-w-md text-lg text-gray-700">
+              Share your goals, and we'll provide personalized recommendations to help you achieve them.
             </p>
 
             <div className="card-actions">
-              <button
-                className="btn btn-lg bg-green-600 text-white hover:bg-green-700"
-                onClick={() => setIsStarted(true)}
-              >
+              <button className="btn btn-lg bg-black text-white hover:bg-green-500" onClick={() => setIsStarted(true)}>
                 Get Started
               </button>
             </div>
@@ -77,10 +78,10 @@ export default function AiHealthCoach() {
 
   // Health Coach form
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center">
-      <div className="card w-full max-w-xl rounded-lg bg-white shadow-xl">
-        <div className="card-body">
-          <h2 className="card-title mb-4 text-2xl font-bold text-green-700">AI Health Coach 🌱</h2>
+    <div className="flex min-h-screen flex-col items-center justify-center bg-neutral-100 p-6 sm:p-8 dark:bg-neutral-900">
+      <div className="card w-full max-w-xl rounded-2xl bg-gradient-to-tl from-green-100 to-white shadow-2xl">
+        <div className="card-body p-10 text-center">
+          <h2 className="card-title mb-4 text-3xl font-semibold text-black">AI Health Coach 🌱 </h2>
 
           <div className="form-control mb-4 w-full">
             <label className="label text-green-700">
@@ -134,7 +135,6 @@ export default function AiHealthCoach() {
                 className="input input-bordered w-full"
                 value={prompt}
                 onChange={(e) => setPrompt(e.target.value)}
-                // onKeyPress={(e) => e.key === "Enter" && sendPrompt()}
               />
             </div>
           )}
@@ -145,15 +145,15 @@ export default function AiHealthCoach() {
                 <span className="loading loading-spinner loading-lg text-green-600"></span>
               </div>
             ) : (
-              <div className="min-h-[200px] whitespace-pre-line rounded-lg bg-green-50 p-4">
-                {answer || "Wait for a response from your personal health coach..."}
+              <div className="min-h-[200px] whitespace-pre-line rounded-lg bg-gray-100 p-4 text-left text-black dark:bg-gray-700 dark:text-white">
+                {answer || "Your health coach's response will appear here...."}
               </div>
             )}
           </div>
 
           <div className="card-actions mt-4 justify-end">
             <button
-              className="btn bg-green-600 text-white hover:bg-green-700"
+              className="btn bg-black text-white hover:bg-green-500 disabled:text-gray-500"
               onClick={sendPrompt}
               disabled={!selectedCategory || !selectedSubcategory || !prompt.trim() || isLoading}
             >
