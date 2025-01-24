@@ -63,7 +63,7 @@ export default function RecipePrompt() {
           {isThinking && <div className="loading loading-spinner loading-lg mx-auto"></div>}
         </div>
         <div className="sticky bottom-8 mt-auto flex flex-col pt-8 ">
-          {!recipe && <h1 className="flex flex-col mx-auto my-8 text-2xl place-items-center font-bold p-8"> <SiCodechef className="h-24" size={52} />
+          {!recipe && <h1 className="flex flex-col mx-auto my-8 text-2xl place-items-center font-bold"> <SiCodechef className="h-24" size={52} />
             What do you want to eat today?
             </h1>}
           <input
