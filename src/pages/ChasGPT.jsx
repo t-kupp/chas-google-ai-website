@@ -1,7 +1,5 @@
 ////////////////////////////////////////////////////////////////
 // TO-DO:                                                     //
-// - Highlight current chat in the sidebar                    //
-// - Add delete button for chats in sidebar                   //
 // - use AI to write a chat summary to display on the sidebar //
 // - add a new chat button                                    //
 ////////////////////////////////////////////////////////////////
@@ -9,9 +7,8 @@
 import Sidebar from "@/components/ChasGPT-Sidebar";
 import InputField from "@/components/ChasGPT-InputField";
 import { model } from "../../util/jan-ai";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ChatContent from "@/components/ChasGPT-ChatContent";
-import { useEffect } from "react";
 
 export default function ChasGPT() {
   const [history, setHistory] = useState([]);
@@ -86,14 +83,28 @@ export default function ChasGPT() {
   function changeActiveHistory(id) {
     setCurrentId(id);
     const foundHistory = storedHistory.find((item) => item.id === id);
-    console.log(foundHistory);
     setHistory(foundHistory.history);
     scrollDown();
   }
 
+  function deleteHistory(id) {
+    const newStoredHistory = storedHistory.filter((item) => item.id !== id);
+    if (newStoredHistory.length <= 0) {
+      setHistory([]);
+    }
+
+    localStorage.setItem("historyStorage", JSON.stringify(newStoredHistory));
+    setStoredHistory(newStoredHistory);
+  }
+
   return (
     <div className="flex flex-grow flex-col px-4 py-8 leading-relaxed text-gray-800 dark:bg-neutral-900 dark:text-gray-200">
-      <Sidebar storedHistory={storedHistory} changeActiveHistory={changeActiveHistory} />
+      <Sidebar
+        storedHistory={storedHistory}
+        changeActiveHistory={changeActiveHistory}
+        currentId={currentId}
+        deleteHistory={deleteHistory}
+      />
       <div className="mx-auto flex w-full max-w-3xl flex-grow flex-col">
         <ChatContent history={history} isThinking={isThinking} />
         <InputField history={history} handleKeyDown={handleKeyDown} addHistoryToStorage={addHistoryToStorage} />

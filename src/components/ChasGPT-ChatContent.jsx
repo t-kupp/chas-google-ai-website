@@ -5,7 +5,6 @@ export default function ChatContent({ history, isThinking }) {
       part.startsWith("**") && part.endsWith("**") ? <strong key={index}>{part.slice(2, -2)}</strong> : part,
     );
   }
-
   return (
     <div className="flex max-h-full flex-col gap-4">
       {history.map((entry, index) => (
