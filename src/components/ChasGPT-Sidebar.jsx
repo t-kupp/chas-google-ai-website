@@ -2,10 +2,10 @@ import { PiSidebar } from "react-icons/pi";
 
 export default function Sidebar() {
   return (
-    <div className="z-50 grid">
+    <div className="sticky top-4 z-50 mr-auto grid">
       <input id="my-drawer" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content">
-        <label htmlFor="my-drawer" className="btn btn-square btn-ghost drawer-button">
+        <label htmlFor="my-drawer" className="btn btn-square drawer-button">
           <PiSidebar size={24} />
         </label>
       </div>
