@@ -13,6 +13,7 @@ export default function ChasGPT() {
 
   useEffect(() => {
     setCurrentId(Date.now());
+    setStoredHistory(JSON.parse(localStorage.getItem("historyStorage")) || []);
   }, []);
 
   function scrollDown() {
@@ -59,25 +60,32 @@ export default function ChasGPT() {
 
   function addHistoryToStorage(history) {
     if (history.length === 0) return;
-    const historyStorage = JSON.parse(localStorage.getItem("historyStorage")) || [];
     const newHistoryEntry = {
       id: currentId,
       history: history,
     };
-
-    const foundItem = historyStorage.find((item) => item.id === currentId);
-
+    const newStoredHistory = [...storedHistory];
+    const foundItem = newStoredHistory.find((item) => item.id === currentId);
     if (!foundItem) {
-      historyStorage.push(newHistoryEntry);
+      newStoredHistory.push(newHistoryEntry);
     } else {
       foundItem.history = history;
     }
-    localStorage.setItem("historyStorage", JSON.stringify(historyStorage));
+    localStorage.setItem("historyStorage", JSON.stringify(newStoredHistory));
+    setStoredHistory(newStoredHistory);
+  }
+
+  function changeActiveHistory(id) {
+    setCurrentId(id);
+    const foundHistory = storedHistory.find((item) => item.id === id);
+    console.log(foundHistory);
+    setHistory(foundHistory.history);
+    scrollDown();
   }
 
   return (
     <div className="flex flex-grow flex-col px-4 py-8 leading-relaxed text-gray-800 dark:bg-neutral-900 dark:text-gray-200">
-      <Sidebar />
+      <Sidebar storedHistory={storedHistory} changeActiveHistory={changeActiveHistory} />
       <div className="mx-auto flex w-full max-w-3xl flex-grow flex-col">
         <ChatContent history={history} isThinking={isThinking} />
         <InputField history={history} handleKeyDown={handleKeyDown} addHistoryToStorage={addHistoryToStorage} />
