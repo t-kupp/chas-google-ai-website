@@ -1,8 +1,10 @@
-//////////////////////////////////////////////
-// TO-DO:                                   //
-// - Highlight current chat in the sidebar  //
-// - Add delete button for chats in sidebar //
-//////////////////////////////////////////////
+////////////////////////////////////////////////////////////////
+// TO-DO:                                                     //
+// - Highlight current chat in the sidebar                    //
+// - Add delete button for chats in sidebar                   //
+// - use AI to write a chat summary to display on the sidebar //
+// - add a new chat button                                    //
+////////////////////////////////////////////////////////////////
 
 import Sidebar from "@/components/ChasGPT-Sidebar";
 import InputField from "@/components/ChasGPT-InputField";
