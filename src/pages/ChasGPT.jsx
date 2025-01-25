@@ -1,3 +1,9 @@
+//////////////////////////////////////////////
+// TO-DO:                                   //
+// - Highlight current chat in the sidebar  //
+// - Add delete button for chats in sidebar //
+//////////////////////////////////////////////
+
 import Sidebar from "@/components/ChasGPT-Sidebar";
 import InputField from "@/components/ChasGPT-InputField";
 import { model } from "../../util/jan-ai";
