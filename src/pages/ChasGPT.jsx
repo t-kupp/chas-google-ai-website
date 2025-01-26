@@ -107,7 +107,7 @@ export default function ChasGPT() {
 
   return (
     <>
-      <h1 className="fixed left-[18px] top-[18px] text-xl font-semibold">ChasGPT</h1>
+      <h1 className="absolute left-[18px] top-[18px] text-xl font-semibold">ChasGPT</h1>
       <div className="flex flex-grow flex-col px-4 py-8 leading-relaxed">
         <Sidebar
           startNewChat={startNewChat}
