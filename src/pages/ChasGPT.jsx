@@ -4,6 +4,7 @@
 //   - use AI to write a chat summary to display on the sidebar   //
 //   - add a send button for accessibility                        //
 //   - add modal confirmation for deleting chat histories         //
+//   - focus input field after pressing New Chat                  //
 //                                                                //
 ////////////////////////////////////////////////////////////////////
 

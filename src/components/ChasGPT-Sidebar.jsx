@@ -29,7 +29,7 @@ export default function Sidebar({ storedHistory, changeActiveHistory, currentId,
                 onClick={() => {
                   changeActiveHistory(item.id);
                 }}
-                className={`${currentId == item.id && "bg-gray-300 dark:bg-gray-700"} btn btn-ghost flex w-full flex-row flex-nowrap items-center`}
+                className={`${currentId == item.id && "backdrop-brightness-90 dark:backdrop-brightness-150"} btn btn-ghost flex w-full flex-row flex-nowrap items-center`}
               >
                 <p className="block truncate p-2">{latestTextEntry}</p>
 
@@ -40,7 +40,7 @@ export default function Sidebar({ storedHistory, changeActiveHistory, currentId,
                   }}
                   className="btn btn-square btn-outline btn-error btn-sm ml-auto border-none"
                 >
-                  <TbTrash size={16} />
+                  <TbTrash size={20} />
                 </button>
               </li>
             );
