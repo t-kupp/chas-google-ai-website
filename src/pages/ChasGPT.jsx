@@ -104,7 +104,7 @@ export default function ChasGPT() {
   }
 
   return (
-    <div className="flex flex-grow flex-col px-4 py-8 leading-relaxed text-gray-800 dark:bg-neutral-900 dark:text-gray-200">
+    <div className="flex flex-grow flex-col px-4 py-8 leading-relaxed">
       <Sidebar
         startNewChat={startNewChat}
         storedHistory={storedHistory}

@@ -10,7 +10,7 @@ export default function InputField({ history, handleKeyDown }) {
         onKeyDown={(e) => handleKeyDown(e)}
         type="text"
         placeholder="Message ChasGPT"
-        className="textarea textarea-bordered mx-auto !h-24 w-full resize-none px-5 py-3 text-base shadow"
+        className="textarea textarea-bordered textarea-primary mx-auto !h-24 w-full resize-none px-5 py-3 text-base shadow"
       />
     </div>
   );

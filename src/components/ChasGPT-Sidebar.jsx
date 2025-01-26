@@ -8,20 +8,20 @@ export default function Sidebar({ storedHistory, changeActiveHistory, currentId,
       <input id="my-drawer" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content flex items-center gap-2">
         <div className="tooltip" data-tip="Sidebar">
-          <label htmlFor="my-drawer" className="btn btn-square drawer-button">
+          <label htmlFor="my-drawer" className="btn btn-square btn-neutral drawer-button">
             <PiSidebar size={24} />
           </label>
         </div>
         <div className="tooltip" data-tip="New Chat">
-          <button className="btn btn-square" onClick={startNewChat}>
+          <button className="btn btn-square btn-neutral" onClick={startNewChat}>
             <FaRegPenToSquare size={20} />
           </button>
         </div>
       </div>
       <div className="drawer-side">
         <label htmlFor="my-drawer" aria-label="close sidebar" className="drawer-overlay"></label>
-        <ul className="min-h-full w-80 bg-base-200 p-4 text-base-content">
-          <li className="px-4 py-2 font-bold">History</li>
+        <ul className="min-h-full w-80 gap-2 bg-base-200 p-4 text-base-content">
+          <li className="gap-2 px-4 py-2 font-bold">History</li>
           {storedHistory.map((item) => {
             const latestTextEntry = item.history[item.history.length - 1].parts[0].text;
             return (
@@ -29,7 +29,7 @@ export default function Sidebar({ storedHistory, changeActiveHistory, currentId,
                 onClick={() => {
                   changeActiveHistory(item.id);
                 }}
-                className={`${currentId == item.id && "bg-neutral-300 dark:bg-slate-700"} btn flex w-full flex-row flex-nowrap items-center`}
+                className={`${currentId == item.id && "bg-gray-300 dark:bg-gray-700"} btn btn-ghost flex w-full flex-row flex-nowrap items-center`}
               >
                 <p className="block truncate p-2">{latestTextEntry}</p>
 

@@ -16,7 +16,9 @@ export default function ChatContent({ history, isThinking }) {
               </div>
             </div>
           )}
-          <div className={`${entry.role === "user" ? "chat-bubble" : ""} whitespace-pre-wrap px-4 py-2`}>
+          <div
+            className={`${entry.role === "user" ? "chat-bubble chat-bubble-primary" : ""} whitespace-pre-wrap px-4 py-2`}
+          >
             {entry.parts.map((part) => processText(part.text))}
           </div>
         </div>
