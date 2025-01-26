@@ -1,19 +1,20 @@
 import { PiSidebar } from "react-icons/pi";
 import { FaRegPenToSquare } from "react-icons/fa6";
 import { TbTrash } from "react-icons/tb";
+import { TbLayoutSidebarLeftExpand } from "react-icons/tb";
 
 export default function Sidebar({ storedHistory, changeActiveHistory, currentId, deleteHistory, startNewChat }) {
   return (
     <div className="drawer sticky top-4 z-50 mr-auto grid">
       <input id="my-drawer" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content flex items-center gap-2">
-        <div className="tooltip" data-tip="Sidebar">
-          <label htmlFor="my-drawer" className="btn btn-square btn-neutral drawer-button">
-            <PiSidebar size={24} />
+        <div className="tooltip text-sm font-semibold" data-tip="Sidebar">
+          <label htmlFor="my-drawer" className="btn btn-square btn-ghost drawer-button">
+            <TbLayoutSidebarLeftExpand size={24} />
           </label>
         </div>
-        <div className="tooltip" data-tip="New Chat">
-          <button className="btn btn-square btn-neutral" onClick={startNewChat}>
+        <div className="tooltip text-sm font-semibold" data-tip="New Chat">
+          <button className="btn btn-square btn-ghost pb-[2px]" onClick={startNewChat}>
             <FaRegPenToSquare size={20} />
           </button>
         </div>
