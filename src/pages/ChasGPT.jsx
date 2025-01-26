@@ -106,18 +106,21 @@ export default function ChasGPT() {
   }
 
   return (
-    <div className="flex flex-grow flex-col px-4 py-8 leading-relaxed">
-      <Sidebar
-        startNewChat={startNewChat}
-        storedHistory={storedHistory}
-        changeActiveHistory={changeActiveHistory}
-        currentId={currentId}
-        deleteHistory={deleteHistory}
-      />
-      <div className="mx-auto flex w-full max-w-3xl flex-grow flex-col">
-        <ChatContent history={history} isThinking={isThinking} />
-        <InputField history={history} handleKeyDown={handleKeyDown} addHistoryToStorage={addHistoryToStorage} />
+    <>
+      <h1 className="fixed left-[18px] top-[18px] text-xl font-semibold">ChasGPT</h1>
+      <div className="flex flex-grow flex-col px-4 py-8 leading-relaxed">
+        <Sidebar
+          startNewChat={startNewChat}
+          storedHistory={storedHistory}
+          changeActiveHistory={changeActiveHistory}
+          currentId={currentId}
+          deleteHistory={deleteHistory}
+        />
+        <div className="mx-auto flex w-full max-w-3xl flex-grow flex-col">
+          <ChatContent history={history} isThinking={isThinking} />
+          <InputField history={history} handleKeyDown={handleKeyDown} addHistoryToStorage={addHistoryToStorage} />
+        </div>
       </div>
-    </div>
+    </>
   );
 }
