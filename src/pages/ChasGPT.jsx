@@ -1,8 +1,11 @@
-////////////////////////////////////////////////////////////////
-// TO-DO:                                                     //
-// - use AI to write a chat summary to display on the sidebar //
-// - add a new chat button                                    //
-////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////
+//                                                                //
+//   TO-DO:                                                       //
+//   - use AI to write a chat summary to display on the sidebar   //
+//   - add a send button for accessibility                        //
+//   - add modal confirmation for deleting chat histories         //
+//                                                                //
+////////////////////////////////////////////////////////////////////
 
 import Sidebar from "@/components/ChasGPT-Sidebar";
 import InputField from "@/components/ChasGPT-InputField";
@@ -65,6 +68,7 @@ export default function ChasGPT() {
 
   function addHistoryToStorage(history) {
     if (history.length === 0) return;
+
     const newHistoryEntry = {
       id: currentId,
       history: history,
@@ -89,17 +93,20 @@ export default function ChasGPT() {
 
   function deleteHistory(id) {
     const newStoredHistory = storedHistory.filter((item) => item.id !== id);
-    if (newStoredHistory.length <= 0) {
-      setHistory([]);
-    }
-
     localStorage.setItem("historyStorage", JSON.stringify(newStoredHistory));
     setStoredHistory(newStoredHistory);
+    startNewChat();
+  }
+
+  function startNewChat() {
+    setHistory([]);
+    setCurrentId(Date.now());
   }
 
   return (
     <div className="flex flex-grow flex-col px-4 py-8 leading-relaxed text-gray-800 dark:bg-neutral-900 dark:text-gray-200">
       <Sidebar
+        startNewChat={startNewChat}
         storedHistory={storedHistory}
         changeActiveHistory={changeActiveHistory}
         currentId={currentId}

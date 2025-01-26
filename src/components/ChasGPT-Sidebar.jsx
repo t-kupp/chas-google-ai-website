@@ -1,14 +1,22 @@
 import { PiSidebar } from "react-icons/pi";
+import { FaRegPenToSquare } from "react-icons/fa6";
 import { TbTrash } from "react-icons/tb";
 
-export default function Sidebar({ storedHistory, changeActiveHistory, currentId, deleteHistory }) {
+export default function Sidebar({ storedHistory, changeActiveHistory, currentId, deleteHistory, startNewChat }) {
   return (
     <div className="drawer sticky top-4 z-50 mr-auto grid">
       <input id="my-drawer" type="checkbox" className="drawer-toggle" />
-      <div className="drawer-content">
-        <label htmlFor="my-drawer" className="btn btn-square drawer-button">
-          <PiSidebar size={24} />
-        </label>
+      <div className="drawer-content flex items-center gap-2">
+        <div className="tooltip" data-tip="Sidebar">
+          <label htmlFor="my-drawer" className="btn btn-square drawer-button">
+            <PiSidebar size={24} />
+          </label>
+        </div>
+        <div className="tooltip" data-tip="New Chat">
+          <button className="btn btn-square" onClick={startNewChat}>
+            <FaRegPenToSquare size={20} />
+          </button>
+        </div>
       </div>
       <div className="drawer-side">
         <label htmlFor="my-drawer" aria-label="close sidebar" className="drawer-overlay"></label>
@@ -24,6 +32,7 @@ export default function Sidebar({ storedHistory, changeActiveHistory, currentId,
                 className={`${currentId == item.id && "bg-neutral-300 dark:bg-slate-700"} btn flex w-full flex-row flex-nowrap items-center`}
               >
                 <p className="block truncate p-2">{latestTextEntry}</p>
+
                 <button
                   onClick={(e) => {
                     e.stopPropagation();
