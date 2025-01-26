@@ -5,9 +5,9 @@ import { TbLayoutSidebarLeftExpand } from "react-icons/tb";
 
 export default function Sidebar({ storedHistory, changeActiveHistory, currentId, deleteHistory, startNewChat }) {
   return (
-    <div className="drawer sticky top-4 z-50 mr-auto grid">
+    <div className="drawer sticky top-0 z-50 mr-auto grid">
       <input id="my-drawer" type="checkbox" className="drawer-toggle" />
-      <div className="drawer-content flex items-center gap-2">
+      <div className="drawer-content flex items-center gap-2 bg-base-100 py-2 lg:bg-transparent">
         <div className="tooltip text-sm font-semibold" data-tip="Sidebar">
           <label htmlFor="my-drawer" className="btn btn-square btn-ghost drawer-button">
             <TbLayoutSidebarLeftExpand size={24} />
@@ -32,7 +32,7 @@ export default function Sidebar({ storedHistory, changeActiveHistory, currentId,
                 }}
                 className={`${currentId == item.id && "backdrop-brightness-90 dark:backdrop-brightness-150"} btn btn-ghost flex w-full flex-row flex-nowrap items-center`}
               >
-                <p className="block truncate p-2">{latestTextEntry}</p>
+                <p className="block truncate">{latestTextEntry}</p>
 
                 <button
                   onClick={(e) => {

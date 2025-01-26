@@ -6,7 +6,7 @@ export default function ChatContent({ history, isThinking }) {
     );
   }
   return (
-    <div className="flex max-h-full flex-col gap-4">
+    <div className="flex max-h-full flex-col gap-4 md:pb-4">
       {history.map((entry, index) => (
         <div key={index} className={`chat gap-1 ${entry.role === "user" ? "chat-end" : "chat-start"}`}>
           {entry.role === "model" && (
