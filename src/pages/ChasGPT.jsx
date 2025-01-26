@@ -5,6 +5,7 @@
 //   - add a send button for accessibility                        //
 //   - add modal confirmation for deleting chat histories         //
 //   - focus input field after pressing New Chat                  //
+//   - close sidebar button                                       //
 //                                                                //
 ////////////////////////////////////////////////////////////////////
 
