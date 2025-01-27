@@ -96,7 +96,7 @@ export default function LanguageTranslator() {
       )}
 
       <div className="m-10 mt-40">
-        <h2 className="m-10 flex items-center justify-center gap-4 p-2 text-center text-3xl font-bold">
+        <h2 className="m-10 flex items-center justify-center gap-4 p-2 text-center text-xl font-bold sm:text-3xl">
           Language Translator AI <GrLanguage />
         </h2>
 
@@ -128,7 +128,7 @@ export default function LanguageTranslator() {
                 <button
                   className="btn"
                   onClick={() => {
-                    if (prompt != "" || secondLanguage != "") {
+                    if (prompt != "") {
                       handleAnswer();
 
                       handleTextArr();
@@ -160,10 +160,10 @@ export default function LanguageTranslator() {
           </div>
           <div className="flex items-center justify-center">
             <p></p>
-            {loading ? <span className="loading loading-spinner loading-md absolute top-[27%]"></span> : ""}
+            {loading ? <span className="loading loading-spinner loading-md top-[27%]"></span> : ""}
           </div>
           <div className="flex flex-col justify-center gap-4 lg:w-6/12">
-            <div className="flex justify-start">
+            <div className="flex justify-start gap-4">
               <select
                 className="select select-bordered w-full max-w-xs"
                 defaultValue="Choose a language"
@@ -186,6 +186,16 @@ export default function LanguageTranslator() {
                 <option value="Danish">Danish</option>
                 <option value="Norwegian">Norwegian</option>
               </select>
+
+              <button
+                className="btn"
+                onClick={() => {
+                  setAnswer("");
+                  setPrompt("");
+                }}
+              >
+                Clear All
+              </button>
             </div>
             <div className="card grid h-32 flex-grow place-items-center rounded-box border-2 border-gray-400 shadow-xl">
               <textarea
@@ -224,10 +234,10 @@ export default function LanguageTranslator() {
             <thead>
               <tr>
                 <th></th>
-                <th className="text-sm">Translated from</th>
-                <th className="text-sm">Translated to</th>
-                <th className="text-sm">Sentence</th>
-                <th className="text-sm">Translated Sentence</th>
+                <th className="text-sm sm:text-xs">Translated from</th>
+                <th className="sm: text-sm">Translated to</th>
+                <th className="sm: text-sm">Sentence</th>
+                <th className="sm: text-sm">Translated Sentence</th>
               </tr>
             </thead>
             <tbody>
@@ -242,7 +252,6 @@ export default function LanguageTranslator() {
                     <td> {sentence.translatedSentence} </td>
                     <td
                       onClick={(e) => {
-                        e.preventDefault();
                         removeRow(sentence.id);
                       }}
                       className="tooltip text-center font-bold hover:cursor-pointer"
