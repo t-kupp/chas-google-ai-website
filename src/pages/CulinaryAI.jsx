@@ -50,7 +50,7 @@ export default function RecipePrompt() {
     }
   }
   return (
-    <div className="flex items-center justify-center min-h-screen px-4 py-8 bg-base-200 dark:bg-neutral-900">
+    <div className="flex items-center justify-center min-h-screen px-4 py-8 bg-base-100 ">
       <div className="mx-auto flex w-full max-w-3xl flex-grow flex-col gap-6">
         {recipe && (
           <div className="rounded-xl bg-white p-6 shadow-lg dark:bg-neutral-800">
@@ -62,7 +62,7 @@ export default function RecipePrompt() {
         )}
         {isThinking && <div className="loading loading-spinner loading-lg mx-auto"></div>}
 
-        <div className="rounded-xl bg-white p-6 shadow-lg dark:bg-neutral-800">
+        <div className="rounded-xl bg-white p-6 shadow-lg dark:bg-base-200">
           {!recipe && (
             <h1 className="flex flex-col mx-auto my-8 text-2xl place-items-center font-bold">
               <SiCodechef className="h-24" size={52} />
@@ -143,7 +143,7 @@ export default function RecipePrompt() {
 
           <button
             onClick={sendRequest}
-            className="btn btn-primary mx-auto mt-6 w-full "
+            className="btn btn-primary mx-auto mt-6 w-full bg-base hover:bg-base "
           >
             Get Cooking! <LuCookingPot />
           </button>
