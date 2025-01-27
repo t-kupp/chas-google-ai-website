@@ -51,6 +51,7 @@ export default function RecipePrompt() {
   }
   return (
     <div className="flex items-center justify-center min-h-screen px-4 py-8 bg-base-100 ">
+      <h1 className="absolute left-[18px] top-[18px] text-xl font-semibold">CulinaryAI</h1>
       <div className="mx-auto flex w-full max-w-3xl flex-grow flex-col gap-6">
         {recipe && (
           <div className="rounded-xl bg-white p-6 shadow-lg dark:bg-neutral-800">
