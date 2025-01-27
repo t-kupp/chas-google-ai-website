@@ -53,21 +53,21 @@ export default function AiHealthCoach() {
   // Homepage AI Health Coach
   if (!isStarted) {
     return (
-      <div className="flex min-h-screen flex-col items-center justify-center bg-neutral-100 p-6 sm:p-8 dark:bg-neutral-900">
+      <div className="bg-neutral-white dark:bg-base-900 flex min-h-screen flex-col items-center justify-center p-6 sm:p-8">
         <h1 className="absolute left-[18px] top-[18px] text-xl font-semibold">AI Health Coach</h1>
-        <div className="card m-8 w-full max-w-lg rounded-2xl bg-gradient-to-tl from-green-100 to-white shadow-2xl">
+        <div className="card m-8 w-full max-w-lg rounded-xl shadow-lg dark:bg-base-200">
           <div className="card-body items-center p-10 text-center">
-            <h1 className="mb-4 text-4xl font-semibold text-black">
+            <h1 className="mb-4 text-4xl font-semibold">
               Your AI Health Coach
-              <span className="block text-lg font-medium text-green-600">is Ready to Help You 🌱</span>
+              <span className="block text-lg font-medium">is Ready to Help You 🌱</span>
             </h1>
 
-            <p className="mx-auto mb-8 max-w-md text-lg text-gray-700">
+            <p className="mx-auto mb-8 max-w-md text-lg">
               Share your goals, and we'll provide personalized recommendations to help you achieve them.
             </p>
 
             <div className="card-actions">
-              <button className="btn btn-lg bg-black text-white hover:bg-green-500" onClick={() => setIsStarted(true)}>
+              <button className="btn btn-primary btn-md dark:text-white" onClick={() => setIsStarted(true)}>
                 Get Started
               </button>
             </div>
@@ -79,13 +79,13 @@ export default function AiHealthCoach() {
 
   // Health Coach form
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center bg-neutral-100 p-6 sm:p-8 dark:bg-neutral-900">
-      <div className="card w-full max-w-xl rounded-2xl bg-gradient-to-tl from-green-100 to-white shadow-2xl">
+    <div className="sm:p-8bg-neutral-white dark:bg-base-900 flex min-h-screen flex-col items-center justify-center p-6">
+      <div className="card w-full max-w-xl rounded-xl shadow-xl dark:bg-base-200">
         <div className="card-body p-10 text-center">
-          <h2 className="card-title mb-4 text-3xl font-semibold text-black">AI Health Coach 🌱 </h2>
+          <h2 className="card-title mb-4 text-3xl font-semibold">AI Health Coach 🌱 </h2>
 
           <div className="form-control mb-4 w-full">
-            <label className="label text-green-700">
+            <label className="label">
               <span className="label-text">Choose Health Category</span>
             </label>
             <select
@@ -107,7 +107,7 @@ export default function AiHealthCoach() {
 
           {selectedCategory && (
             <div className="form-control mb-4 w-full">
-              <label className="label text-green-700">
+              <label className="label">
                 <span className="label-text">Choose Specific Area</span>
               </label>
               <select
@@ -127,7 +127,7 @@ export default function AiHealthCoach() {
 
           {selectedSubcategory && (
             <div className="form-control mb-4 w-full">
-              <label className="label text-green-700">
+              <label className="label">
                 <span className="label-text">Ask Your Specific Question</span>
               </label>
               <input
@@ -142,11 +142,11 @@ export default function AiHealthCoach() {
 
           <div className="mt-4">
             {isLoading ? (
-              <div className="flex justify-center">
-                <span className="loading loading-spinner loading-lg text-green-600"></span>
+              <div className="flex justify-center text-success">
+                <span className="loading loading-spinner loading-lg"></span>
               </div>
             ) : (
-              <div className="min-h-[200px] whitespace-pre-line rounded-lg bg-gray-100 p-4 text-left text-black dark:bg-gray-700 dark:text-white">
+              <div className="min-h-[200px] whitespace-pre-line rounded-lg bg-base-200 p-4 text-left dark:bg-base-100">
                 {answer || "Your health coach's response will appear here...."}
               </div>
             )}
@@ -154,7 +154,7 @@ export default function AiHealthCoach() {
 
           <div className="card-actions mt-4 justify-end">
             <button
-              className="btn bg-black text-white hover:bg-green-500 disabled:text-gray-500"
+              className="btn btn-primary disabled:text-neutral-500"
               onClick={sendPrompt}
               disabled={!selectedCategory || !selectedSubcategory || !prompt.trim() || isLoading}
             >
@@ -164,7 +164,7 @@ export default function AiHealthCoach() {
         </div>
       </div>
 
-      <div className="mt-4 max-w-xl text-center text-sm text-gray-600">
+      <div className="mt-4 max-w-xl text-center text-sm text-neutral-600">
         <p>Note: This is an AI assistant. Advice should not replace professional medical advice.</p>
       </div>
     </div>
