@@ -3,7 +3,6 @@ import { useState } from "react";
 import { LuCookingPot } from "react-icons/lu";
 import { SiCodechef } from "react-icons/si";
 
-
 export default function RecipePrompt() {
   const [isThinking, setIsThinking] = useState(false);
   const [input, setInput] = useState("");
@@ -50,36 +49,40 @@ export default function RecipePrompt() {
       }, 500);
     }
   }
-
   return (
-    <div className="flex flex-grow flex-col px-4 py-8 bg-base-200 dark:bg-neutral-900">
-      <div className="mx-auto flex w-full max-w-3xl flex-grow flex-col">
-        <div className="flex max-h-full flex-col gap-4">
-          {recipe && (
-            <div className="chat chat-start">
-              <div className="chat-bubble whitespace-pre-wrap">{recipe}</div>
+    <div className="flex items-center justify-center min-h-screen px-4 py-8 bg-base-200 dark:bg-neutral-900">
+      <div className="mx-auto flex w-full max-w-3xl flex-grow flex-col gap-6">
+        {recipe && (
+          <div className="rounded-xl bg-white p-6 shadow-lg dark:bg-neutral-800">
+            <h2 className="text-2xl font-bold text-center mb-4">Your Recipe</h2>
+            <div className="prose dark:prose-invert mx-auto whitespace-pre-wrap">
+              {recipe}
             </div>
+          </div>
+        )}
+        {isThinking && <div className="loading loading-spinner loading-lg mx-auto"></div>}
+
+        <div className="rounded-xl bg-white p-6 shadow-lg dark:bg-neutral-800">
+          {!recipe && (
+            <h1 className="flex flex-col mx-auto my-8 text-2xl place-items-center font-bold">
+              <SiCodechef className="h-24" size={52} />
+              What do you want to eat today?
+            </h1>
           )}
-          {isThinking && <div className="loading loading-spinner loading-lg mx-auto"></div>}
-        </div>
-        <div className="sticky bottom-8 mt-auto flex flex-col pt-8 ">
-          {!recipe && <h1 className="flex flex-col mx-auto my-8 text-2xl place-items-center font-bold"> <SiCodechef className="h-24" size={52} />
-            What do you want to eat today?
-            </h1>}
           <input
             value={input}
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={(e) => handleKeyDown(e)}
             type="text"
             placeholder="Enter a main ingredient"
-            className="input input-bordered mx-auto w-full max-w-xl bg-base-100 placeholder-neutral-400"
+            className="input input-bordered w-full bg-base-100 placeholder-neutral-400 mb-4"
           />
 
-          <div className="mt-4 flex flex-col gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <select
               value={cookingTime}
               onChange={(e) => setCookingTime(e.target.value)}
-              className="select select-bordered w-full max-w-xl mx-auto"
+              className="select select-bordered w-full"
             >
               <option value="">Select cooking time (optional)</option>
               <option value="30 minutes">30 minutes</option>
@@ -87,13 +90,13 @@ export default function RecipePrompt() {
               <option value="1 hour">1 hour</option>
               <option value="1 hour 30 minutes">1 hour 30 minutes</option>
               <option value="2 hours">2 hours</option>
-              <option value="2 hours">3 hours</option>
+              <option value="3 hours">3 hours</option>
             </select>
 
             <select
               value={country}
               onChange={(e) => setCountry(e.target.value)}
-              className="select select-bordered w-full max-w-xl mx-auto"
+              className="select select-bordered w-full"
             >
               <option value="">Select country (optional)</option>
               <option value="Italy">Italy</option>
@@ -115,7 +118,7 @@ export default function RecipePrompt() {
             <select
               value={people}
               onChange={(e) => setPeople(e.target.value)}
-              className="select select-bordered w-full max-w-xl mx-auto"
+              className="select select-bordered w-full"
             >
               <option value="">Select number of people (optional)</option>
               <option value="1">1</option>
@@ -129,7 +132,7 @@ export default function RecipePrompt() {
             <select
               value={complexity}
               onChange={(e) => setComplexity(e.target.value)}
-              className="select select-bordered w-full max-w-xl mx-auto"
+              className="select select-bordered w-full"
             >
               <option value="">Select the complexity of the dish (optional)</option>
               <option value="easy">easy</option>
@@ -140,10 +143,9 @@ export default function RecipePrompt() {
 
           <button
             onClick={sendRequest}
-            className="btn btn-primary mx-auto mt-6 w-full max-w-xl"
+            className="btn btn-primary mx-auto mt-6 w-full "
           >
             Get Cooking! <LuCookingPot />
-
           </button>
         </div>
       </div>
