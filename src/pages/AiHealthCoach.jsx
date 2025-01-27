@@ -54,7 +54,7 @@ export default function AiHealthCoach() {
   if (!isStarted) {
     return (
       <div className="bg-neutral-white dark:bg-base-900 flex min-h-screen flex-col items-center justify-center p-6 sm:p-8">
-        <h1 className="absolute left-[18px] top-[18px] text-xl font-semibold">AI Health Coach</h1>
+        <h1 className="absolute left-[18px] top-[18px] text-xl font-semibold">ThriveAI</h1>
         <div className="card m-8 w-full max-w-lg rounded-xl shadow-lg dark:bg-base-200">
           <div className="card-body items-center p-10 text-center">
             <h1 className="mb-4 text-4xl font-semibold">
@@ -80,6 +80,7 @@ export default function AiHealthCoach() {
   // Health Coach form
   return (
     <div className="sm:p-8bg-neutral-white dark:bg-base-900 flex min-h-screen flex-col items-center justify-center p-6">
+      <h1 className="absolute left-[18px] top-[18px] text-xl font-semibold">ThriveAI</h1>
       <div className="card w-full max-w-xl rounded-xl shadow-xl dark:bg-base-200">
         <div className="card-body p-10 text-center">
           <h2 className="card-title mb-4 text-3xl font-semibold">AI Health Coach 🌱 </h2>

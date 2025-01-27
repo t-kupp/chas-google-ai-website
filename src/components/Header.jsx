@@ -18,7 +18,7 @@ export default function Header() {
         </li>
         <li>
           <Link className="link-hover link flex font-semibold" href="/TranslatorAi">
-            TranslatorAi
+            TranslatorAI
           </Link>
         </li>
         <li>
@@ -28,7 +28,7 @@ export default function Header() {
         </li>
         <li>
           <Link className="link-hover link flex font-semibold" href="/AiHealthCoach">
-            AI Health Coach
+            ThriveAI
           </Link>
         </li>
       </>
