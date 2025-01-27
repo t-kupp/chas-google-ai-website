@@ -54,6 +54,7 @@ export default function AiHealthCoach() {
   if (!isStarted) {
     return (
       <div className="flex min-h-screen flex-col items-center justify-center bg-neutral-100 p-6 sm:p-8 dark:bg-neutral-900">
+        <h1 className="absolute left-[18px] top-[18px] text-xl font-semibold">AI Health Coach</h1>
         <div className="card m-8 w-full max-w-lg rounded-2xl bg-gradient-to-tl from-green-100 to-white shadow-2xl">
           <div className="card-body items-center p-10 text-center">
             <h1 className="mb-4 text-4xl font-semibold text-black">
