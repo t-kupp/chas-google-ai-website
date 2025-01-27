@@ -34,8 +34,7 @@ export default function Home() {
               <h1 className="mb-4 bg-gradient-to-r from-primary to-secondary bg-clip-text text-4xl font-bold text-transparent sm:mb-6 sm:text-5xl lg:text-6xl">
                 Welcome to ChasAI Platform
               </h1>
-              <p className="max-w-2xl text-lg opacity-75 sm:text-xl">
-                {" "}
+              <p className="mx-auto max-w-2xl text-xl text-gray-300">
                 Explore our suite of AI-powered tools designed to enhance your daily life
               </p>
             </div>
