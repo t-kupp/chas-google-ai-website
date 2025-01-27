@@ -153,7 +153,7 @@ export default function LanguageTranslator() {
                 }}
                 name=""
                 id=""
-                className="h-28 w-full resize-none rounded-2xl bg-white p-2 outline-none"
+                className="h-28 w-full resize-none rounded-2xl bg-base-100 p-2 outline-none"
                 placeholder="Write something to translate..."
               ></textarea>
             </div>
@@ -192,7 +192,7 @@ export default function LanguageTranslator() {
                 name=""
                 id=""
                 disabled
-                className="h-28 w-full resize-none rounded-2xl bg-white p-2 outline-none"
+                className="h-28 w-full resize-none rounded-2xl bg-base-100 p-2 outline-none"
                 placeholder="Translation..."
                 value={answer}
               ></textarea>
