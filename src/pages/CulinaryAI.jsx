@@ -50,22 +50,20 @@ export default function RecipePrompt() {
     }
   }
   return (
-    <div className="flex items-center justify-center min-h-screen px-4 py-8 bg-base-100 ">
+    <div className="flex min-h-screen items-center justify-center bg-base-100 px-4 py-8">
       <h1 className="absolute left-[18px] top-[18px] text-xl font-semibold">CulinaryAI</h1>
       <div className="mx-auto flex w-full max-w-3xl flex-grow flex-col gap-6">
         {recipe && (
-          <div className="rounded-xl bg-white p-6 shadow-lg dark:bg-neutral-800">
-            <h2 className="text-2xl font-bold text-center mb-4">Your Recipe</h2>
-            <div className="prose dark:prose-invert mx-auto whitespace-pre-wrap">
-              {recipe}
-            </div>
+          <div className="rounded-xl bg-base-200 p-6 shadow-lg">
+            <h2 className="mb-4 text-center text-2xl font-bold">Your Recipe</h2>
+            <div className="dark:prose-invert prose mx-auto whitespace-pre-wrap">{recipe}</div>
           </div>
         )}
         {isThinking && <div className="loading loading-spinner loading-lg mx-auto"></div>}
 
         <div className="rounded-xl bg-white p-6 shadow-lg dark:bg-base-200">
           {!recipe && (
-            <h1 className="flex flex-col mx-auto my-8 text-2xl place-items-center font-bold">
+            <h1 className="mx-auto my-8 flex flex-col place-items-center text-2xl font-bold">
               <SiCodechef className="h-24" size={52} />
               What do you want to eat today?
             </h1>
@@ -76,10 +74,10 @@ export default function RecipePrompt() {
             onKeyDown={(e) => handleKeyDown(e)}
             type="text"
             placeholder="Enter a main ingredient"
-            className="input input-bordered w-full bg-base-100 placeholder-neutral-400 mb-4"
+            className="input input-bordered mb-4 w-full bg-base-100 placeholder-neutral-400"
           />
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             <select
               value={cookingTime}
               onChange={(e) => setCookingTime(e.target.value)}
@@ -142,10 +140,7 @@ export default function RecipePrompt() {
             </select>
           </div>
 
-          <button
-            onClick={sendRequest}
-            className="btn btn-primary mx-auto mt-6 w-full bg-base hover:bg-base "
-          >
+          <button onClick={sendRequest} className="bg-base hover:bg-base btn btn-primary mx-auto mt-6 w-full">
             Get Cooking! <LuCookingPot />
           </button>
         </div>
